@@ -1,0 +1,28 @@
+<div class="container">
+    <% @questions.each do |question| %>
+        <div class="row justify-content-md-center">
+        <div class="col-8 mt-4">
+            <div class="card text-center shadow p-1 mb-5 bg-white rounded">
+            <div class="card-header font-italic">
+            <% if question.user %>
+                by <%= link_to question.user.username, user_path(question.user) %>
+            <% end %>    
+            </div>
+            <div class="card-body">
+                <h5 class="card-title"><%= link_to question.title, question_path(question), class: "text-success" %></h5>
+                <p class="card-text"><%= truncate(question.body, length: 100) %></p>
+                <% if user_signed_in? %>
+                    <%= link_to "Answer", question_path(question), class: "btn btn-outline-success" %>
+                    <%= link_to "Edit", edit_question_path(question), class: "btn btn-outline-info" if question.user==current_user || current_user.admin? %>
+                    <%= link_to "Delete", question_path(question), data: { method: :delete, confirm: "Are you sure?"}, class: "btn btn-outline-danger" if question.user==current_user || current_user.admin? %>
+                 <% end %>
+            </div>
+            <div class="card-footer text-muted">
+                <small>Created <%= time_ago_in_words(question.created_at) %> ago,
+                updated <%= time_ago_in_words(question.updated_at) %> ago</small>
+            </div>
+            </div>
+    </div>
+    </div>
+    <% end %>
+</div>

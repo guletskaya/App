@@ -1,0 +1,58 @@
+@import 'bootstrap/dist/css/bootstrap';
+
+.navbar {
+    background-color: black !important;
+  }
+
+  .nav-link {
+    color: white !important;
+  }
+  
+  #logo {
+    float: left;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.7em;
+    color: rgb(255, 255, 255);
+    text-transform: uppercase;
+    letter-spacing: -1px;
+    font-weight: bold;
+  }
+  
+  #home-container {
+    background-color: rgb(255, 255, 255) !important;
+    margin-top: 40px;
+    color: white; 
+    align-content: center;
+    text-align: center;
+    background-image: asset-url('image.jpg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 500px;
+    
+  }
+  
+  
+  html,
+  body {
+    height: 100%;
+  }
+  
+  #page-content {
+    flex: 1 0 auto;
+    background-color: lightgray;
+  }
+  
+  #sticky-footer {
+    flex-shrink: none;
+  }
+
+  #form {
+    margin-bottom: 5px;
+    margin-top: 20px;
+    align-content: center;
+    background-color:lightgreen;
+    height: 400px;
+    width: 900px;
+    
+  }

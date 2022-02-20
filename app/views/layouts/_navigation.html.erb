@@ -1,0 +1,39 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+  <% if user_signed_in? %>
+  <%= link_to "ASKAPP", root_path, class: "navbar-brand", id: "logo" %>
+  <% else %>
+  <%= link_to "ASKAPP", questions_path, class: "navbar-brand", id: "logo" %>
+  <% end %>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+        <a><%= link_to "Ask a question", new_question_path, class: "nav-link" if user_signed_in? %><span class="sr-only" ></span></a>
+        </li>
+        <li class="nav-item">
+        <a><%= link_to "Questions", questions_path, class: "nav-link" %><span class="sr-only" ></a>
+        </li>
+        <li class="nav-item">
+        <a><%= link_to "Pictures", pictures_path, class: "nav-link" if user_signed_in? %><span class="sr-only"  ></span></a>
+        </li>
+        <li class="nav-item">
+        <%if user_signed_in? && current_user.admin? %>
+        <a><%= link_to "Users", users_path, class: "nav-link" %><span class="sr-only" ></span></a>
+        <% end %>
+        </li>
+      </ul>
+      <form class="d-flex navbar-nav ">
+      <% if user_signed_in? %>
+      <a><%= link_to "Log out", destroy_user_session_path, method: :delete, class: "nav-link" %><span class="sr-only"></span></a>
+      <a><%= link_to current_user.username, user_path(current_user), class: "nav-link" %><span class="sr-only"></span></a>
+      <% else %>
+      <a><%= link_to "Log in", new_user_session_path, class: "nav-link" %><span class="sr-only"></span></a>
+      <a><%= link_to "Sign up", new_user_registration_path, class: "nav-link" %><span class="sr-only"></span></a>
+      <% end %>
+      </form>
+    </div>
+  </div>
+</nav>

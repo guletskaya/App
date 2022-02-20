@@ -1,0 +1,5 @@
+<h1 class="text-center mt-4">Questions listing page</h1>
+<p>
+<%= link_to "Create a new question", new_question_path, class: "btn btn-success mx-auto btn-lg d-grid gap-2 d-md-flex mt-4 col-4 justify-content-md-center" if user_signed_in? %>
+</p>
+<%= render 'question' %>

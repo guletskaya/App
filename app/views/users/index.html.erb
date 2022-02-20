@@ -1,0 +1,26 @@
+<h1 class="text-center mt-4">AskAll users</h1>
+<div class="container">
+    <% @users.each do |user| %>
+        <div class="row justify-content-md-center">
+        <div class="col-8 mt-4">
+            <div class="card text-center shadow p-1 mb-5 bg-white rounded">
+            <div class="card-header font-italic">
+                <%= link_to user.username, user %>
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">
+                <%= image_tag user.avatar, width:"130px" if user.avatar.attached?%>
+                </h5>
+                <p class="card-text"><%= pluralize(user.questions.count, "question") %></p>
+                <%= link_to "View profile", user, class: "btn btn-outline-success" %>
+                
+                <%= link_to "Edit profile", edit_user_registration_path(user), class: "btn btn-outline-info" %>
+            </div>
+            <div class="card-footer text-muted">
+                <small>Joined <%= time_ago_in_words(user.created_at) %> ago </small>
+            </div>
+            </div>
+    </div>
+    </div>
+    <% end %>
+</div>
